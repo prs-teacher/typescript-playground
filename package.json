@@ -1,0 +1,24 @@
+{
+  "name": "typescript-playground",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "tsc": "pnpm exec tsc",
+    "tsc:w": "pnpm exec tsc -w",
+    "tsx": "pnpm exec tsx",
+    "tsx:w": "pnpm exec tsx watch"
+  },
+  "dependencies": {
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
+}

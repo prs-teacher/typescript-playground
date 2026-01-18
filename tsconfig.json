@@ -1,0 +1,53 @@
+{
+  // この tsconfig.json の詳しい説明（公式ドキュメント）はこちら: https://aka.ms/tsconfig
+  "include": ["src/**/*"],
+  "compilerOptions": {
+    // --- File Layout（出力先など、ファイル配置に関する設定） ---
+
+    "rootDir": "./src", // コンパイル対象のルートディレクトリ（未指定だと自動推定される）
+    "outDir": "./dist", // コンパイル後のJSファイルなどの出力先ディレクトリ
+
+    // --- Environment Settings（実行環境/モジュール方式の設定） ---
+
+    // モジュール形式の設定についての説明はこちら: https://aka.ms/tsconfig/module
+    "module": "nodenext", // Node.js の ESM/CJS 両対応のモジュール解決ルールに合わせる（package.json の type なども考慮）
+    "target": "ES2022", // 出力するJavaScriptの言語レベル（ES2022相当の構文で出力）
+    "moduleResolution": "nodenext", // import の解決方法を Node.js(ESM寄り) の仕様に合わせる
+    "types": [], // 自動で @types/* を読み込まない（必要な型定義だけを明示的に指定したい場合に使う）
+
+    // For nodejs: // Node.js 向けにする場合の例
+    // "lib": ["esnext"], // 標準ライブラリの型定義（PromiseやDOMなど）をどれにするか（esnext は最新寄り）
+    // "types": ["node"], // Node.js の型定義（process, Buffer など）を有効にする
+    // and npm install -D @types/node // そのために @types/node を開発依存で入れる必要がある
+
+    // --- Other Outputs（追加で出力するファイルの設定） ---
+
+    "sourceMap": true, // .map ファイルを出力して、デバッグ時にTSの元コードに追跡できるようにする
+    "declaration": true, // 型定義ファイル（.d.ts）を出力する（ライブラリ公開や別プロジェクト参照に便利）
+    "declarationMap": true, // .d.ts 用の sourcemap を出力し、型定義から元TSへ辿れるようにする
+
+    // --- Stricter Typechecking Options（より厳密な型チェック） ---
+
+    "noUncheckedIndexedAccess": true, // obj[key] の結果を常に「undefinedの可能性あり」として扱い、安全性を上げる
+    "exactOptionalPropertyTypes": true, // optional（?）プロパティの扱いを厳密化（「存在しない」と「undefined」を区別）
+
+    // --- Style Options（コード品質/スタイル寄りのチェック） ---
+
+    // "noImplicitReturns": true, // 関数内で return が抜ける分岐がある場合にエラーにする
+    // "noImplicitOverride": true, // override すべきメソッドに override キーワードを強制する
+    // "noUnusedLocals": true, // 使われていないローカル変数をエラーにする
+    // "noUnusedParameters": true, // 使われていない引数をエラーにする
+    // "noFallthroughCasesInSwitch": true, // switch の case で break なしのフォールスルーをエラーにする
+    // "noPropertyAccessFromIndexSignature": true, // index signature 型に対して obj.prop のアクセスを禁止し、obj["prop"] を強制する
+
+    // --- Recommended Options（TS推奨の代表的な設定群） ---
+
+    "strict": true, // strict系の型チェックをまとめてON（安全性が大幅に上がる）
+    "jsx": "react-jsx", // React 17+ の新しい JSX 変換（React import 不要な形式）
+    "verbatimModuleSyntax": true, // import/export をできるだけそのまま出力し、型専用importなども厳密に扱う
+    "isolatedModules": true, // ファイル単体で変換できる前提を強制（Babel/ts-jest/Nextなどの環境と相性が良い）
+    "noUncheckedSideEffectImports": true, // 副作用目的の import（import "x"）をチェックし、意図しない副作用を減らす
+    "moduleDetection": "force", // すべてのファイルをモジュールとして扱う（自動判定に頼らず一貫性を持たせる）
+    "skipLibCheck": true // node_modules 等の型チェックをスキップしてビルドを速くする（実務でよくONにする）
+  }
+}
