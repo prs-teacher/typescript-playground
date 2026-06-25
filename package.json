@@ -13,12 +13,9 @@
     "tsx:w": "pnpm exec tsx watch"
   },
   "dependencies": {
-    "tsx": "^4.21.0",
-    "typescript": "^5.9.3"
+    "tsx": "^4.21.0"
   },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild"
-    ]
+  "devDependencies": {
+    "typescript": "7.0.1-rc"
   }
 }
